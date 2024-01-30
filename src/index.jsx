@@ -58,7 +58,7 @@ function App() {
 }
 
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
+  return <h1 style={{ color: "red" }}>Fast React Pizza Co.</h1>;
 }
 
 function Menu() {
@@ -74,9 +74,18 @@ function Menu() {
 }
 
 function Footer() {
-  return (
-    <footer>{new Date().toLocaleDateString()}. We're currently open</footer>
-  );
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+
+  // if (hour >= openHour && hour <= closeHour) alert("We're currently open!");
+  // else alert("Sorry, we're closed.");
+
+  // return (
+  //   <footer>{new Date().toLocaleDateString()}. We're currently open</footer>
+  // );
 }
 
 function Pizza() {
@@ -98,4 +107,9 @@ root.render(
 );
 
 // React before 18
-// React.render(<App />, document.getElementById("root"));
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );
