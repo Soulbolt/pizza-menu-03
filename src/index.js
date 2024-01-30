@@ -7,4 +7,11 @@ function App() {
 
 //React v18
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// React before 18
+// React.render(<App />);
