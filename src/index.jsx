@@ -50,7 +50,6 @@ const pizzaData = [
 function App() {
   return (
     <div className="container">
-      <h1>Hello React!!</h1>
       <Header />
       <Menu />
       <Footer />
@@ -72,7 +71,7 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <ul>
+      <ul className="pizzas">
         {pizzaData.map((pizza) => (
           <Pizza pizzaOjb={pizza} key={pizza.name} />
         ))}
