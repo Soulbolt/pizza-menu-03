@@ -100,15 +100,16 @@ function Menu() {
 }
 
 function Pizza({ pizzaOjb }) {
-  if (pizzaOjb.soldOut) return null;
+  // if (pizzaOjb.soldOut) return null;
 
   return (
-    <li className="pizza">
+    // We use ternary conditional to check if sold out and gray out selection Must use backwards til to use JS code
+    <li className={`pizza ${pizzaOjb.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaOjb.photoName} alt={pizzaOjb.name} />
       <div>
         <h3>{pizzaOjb.name}</h3>
         <p>{pizzaOjb.ingredients}</p>
-        <span>{pizzaOjb.price}</span>
+        <span>{pizzaOjb.soldOut ? "SOLD OUT" : pizzaOjb.price}</span>
       </div>
     </li>
   );
