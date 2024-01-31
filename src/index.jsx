@@ -99,14 +99,16 @@ function Menu() {
   );
 }
 
-function Pizza(props) {
+function Pizza({ pizzaOjb }) {
+  if (pizzaOjb.soldOut) return null;
+
   return (
     <li className="pizza">
-      <img src={props.pizzaOjb.photoName} alt={props.pizzaOjb.name} />
+      <img src={pizzaOjb.photoName} alt={pizzaOjb.name} />
       <div>
-        <h3>{props.pizzaOjb.name}</h3>
-        <p>{props.pizzaOjb.ingredients}</p>
-        <span>{props.pizzaOjb.price}</span>
+        <h3>{pizzaOjb.name}</h3>
+        <p>{pizzaOjb.ingredients}</p>
+        <span>{pizzaOjb.price}</span>
       </div>
     </li>
   );
@@ -125,18 +127,25 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>
-            We're are open until {closeHour}:00. Come visit us or order online.
-          </p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHour={closeHour} openHour={openHour} /> //pass it on as a prop/parameter to the order component/function
       ) : (
         <p>
           We're happy to welcome you between {openHour}:00 and {closeHour}:00.
         </p>
       )}
     </footer>
+  );
+}
+
+function Order({ closeHour, openHour }) {
+  return (
+    <div className="order">
+      <p>
+        We're are open from {openHour}:00 to {closeHour}:00. Come visit us or
+        order online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
   );
 }
 
